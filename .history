@@ -1,0 +1,7 @@
+show libraryJarPath
+help
+show dependencyClasspath
+show name
+inspect console
+inspect
+inspect dependencies
