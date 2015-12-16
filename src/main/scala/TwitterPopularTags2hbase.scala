@@ -22,20 +22,20 @@ import org.apache.spark.SparkContext._
 import org.apache.spark.streaming.twitter._
 import org.apache.spark.SparkConf
 
-import org.apache.spark.storage.StorageLevel 
-import org.apache.hadoop.hbase.HBaseConfiguration 
-import org.apache.hadoop.hbase.client.{HBaseAdmin,HTable,Put,Get} 
-import org.apache.hadoop.hbase.util.Bytes 
+import org.apache.spark.storage.StorageLevel
+import org.apache.hadoop.hbase.HBaseConfiguration
+import org.apache.hadoop.hbase.client.{HBaseAdmin,HTable,Put,Get}
+import org.apache.hadoop.hbase.util.Bytes
 
 
 object Blaher {
-  def blah(row: Array[String]) { 
-    val hConf = new HBaseConfiguration() 
-    val hTable = new HTable(hConf, "table") 
-    val thePut = new Put(Bytes.toBytes(row(0))) 
-    thePut.add(Bytes.toBytes("cf"), Bytes.toBytes(row(0)), Bytes.toBytes(row(0))) 
-    hTable.put(thePut) 
-  } 
+  def blah(row: Array[String]) {
+    val hConf = new HBaseConfiguration()
+    val hTable = new HTable(hConf, "table")
+    val thePut = new Put(Bytes.toBytes(row(0)))
+    thePut.add(Bytes.toBytes("cf"), Bytes.toBytes(row(0)), Bytes.toBytes(row(0)))
+    hTable.put(thePut)
+  }
 }
 
 /**
@@ -84,7 +84,7 @@ object TwitterPopularTags {
     // Print popular hashtags
     topCounts60.foreachRDD(rdd => {
       val topList = rdd.take(10)
-      topList.foreach{case (count, tag) => rdd.foreach(Blaher.blah)}
+      topList.foreach{case (count.toString, tag) => rdd.foreach(Blaher.blah)}
     })
 
     topCounts10.foreachRDD(rdd => {
