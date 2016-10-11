@@ -84,7 +84,7 @@ object TwitterPopularTags {
     // Print popular hashtags
     topCounts60.foreachRDD(rdd => {
       val topList = rdd.take(10)
-      topList.foreach{case (count.toString, tag) => rdd.foreach(Blaher.blah)}
+      topList.foreach{case (count, tag) => rdd.foreach(Blaher.blah)}
     })
 
     topCounts10.foreachRDD(rdd => {
